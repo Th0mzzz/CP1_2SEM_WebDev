@@ -45,3 +45,10 @@ Apresentar uma interface prática e elegante para gerenciar informações de jog
 - JavaScript (Vanilla) — manipulação do DOM, lógica do CRUD e LocalStorage.
 
 - Bootstrap / Bootstrap Icons — para acelerar estilos e ícones nos componentes quando desejado.
+
+# Integrantes
+- Pedro Henrique dos Santos
+- Pedro Cunha Coutinho
+- Breno Henrique Bortoloti Santos
+- Thomaz Vasconcelos Mendes
+- Nicolas Tetsuo Kimura
