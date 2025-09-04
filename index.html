@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogadoras FC</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="src/styles/index.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav>
+        <h1 class="logo">
+          <img
+            src="src/assets/logo-jogajunto.png"
+            alt="Logo do site"
+          />Jogadoras FC
+        </h1>
+        <a href="index.html" class="link"
+          ><i class="bi bi-github"></i>Repositório</a
+        >
+      </nav>
+    </header>
+    <main>
+      <section class="container">
+        <h2 class="subtitle">Cadastrar nova jogadora</h2>
+        <form
+          class="form-jogadora"
+        >
+          <input type="hidden" name="index" id="index" />
+          <div class="input-container" style="max-width: 480px">
+            <label for="nome">Nome</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              required
+              placeholder="Digite um nome..."
+            />
+          </div>
+          <div class="input-container" style="max-width: 480px">
+            <label for="foto">Foto</label>
+            <input
+              type="text"
+              id="foto"
+              name="foto"
+              required
+              placeholder="Coloque uma url de uma foto..."
+            />
+          </div>
+          <div class="input-container" style="max-width: 320px">
+            <label for="posicao">Posição</label>
+            <input
+              type="text"
+              id="posicao"
+              name="posicao"
+              required
+              placeholder="Digite uma posição..."
+            />
+          </div>
+          <div class="input-container" style="max-width: 320px">
+            <label for="clube">Clube</label>
+            <input
+              type="text"
+              id="clube"
+              name="clube"
+              required
+              placeholder="Digite o clube..."
+            />
+          </div>
+          <div class="input-container" style="max-width: 300px">
+            <label for="gols">Gols</label>
+            <input
+              type="number"
+              id="gols"
+              name="gols"
+              required
+              placeholder="Digite a quantidades de gols..."
+            />
+          </div>
+          <div class="input-container" style="max-width: 300px">
+            <label for="assistencias">Assistências</label>
+            <input
+              type="number"
+              id="assistencias"
+              name="assistencias"
+              required
+              placeholder="Digite a quantidades de assistências..."
+            />
+          </div>
+          <div class="input-container" style="max-width: 300px">
+            <label for="partidas">Partidas</label>
+            <input
+              type="number"
+              id="partidas"
+              name="partidas"
+              required
+              placeholder="Digite a quantidades de partidas..."
+            />
+          </div>
+
+          <button class="btn btn-cadastrar" type="button">
+            Cadastrar nova jogadora
+          </button>
+        </form>
+      </section>
+      <section class="container">
+        <h2 class="subtitle">Todas as jogadoras</h2>
+        <div id="lista_jogadoras"></div>
+      </section>
+    </main>
+    <script src="src/js/index.js"></script>
+  </body>
+</html>
