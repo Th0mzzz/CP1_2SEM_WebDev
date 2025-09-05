@@ -178,7 +178,7 @@ ol {
   flex-flow: column nowrap;
   width: 100%;
   margin-bottom: 10px;
-  & input {
+  & input , & select {
     flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
@@ -201,4 +201,12 @@ ol {
   &:hover {
     background: #5a317d;
   }
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
