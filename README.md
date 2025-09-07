@@ -48,7 +48,5 @@ Apresentar uma interface prática e elegante para gerenciar informações de jog
 
 # Integrantes
 - Pedro Henrique dos Santos
-- Pedro Cunha Coutinho
 - Breno Henrique Bortoloti Santos
 - Thomaz Vasconcelos Mendes
-- Nicolas Tetsuo Kimura
