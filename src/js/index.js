@@ -52,6 +52,10 @@ let jogadoras = [
 ];
 const listaJogadoras = document.querySelector("#lista_jogadoras");
 const form = document.querySelector(".form-jogadora");
+const pesquisaFilter = document.querySelector("#pesquisa");
+const filterTime = document.querySelector("#filterTime");
+const ordenar = document.querySelector("#ordenar");
+
 if (localStorage.getItem("jogadoras")) {
   jogadoras = JSON.parse(localStorage.getItem("jogadoras"));
 } else {
@@ -183,3 +187,52 @@ form.addEventListener("submit", (e) => {
 
 renderizarJogadoras(jogadoras);
 
+pesquisaFilter.addEventListener("input", (e) => {
+  const valor = e.target.value.toLowerCase();
+  if (valor !== "") {
+    renderizarJogadoras(
+      jogadoras.filter(
+        (j) =>
+          j.nome.toLowerCase().includes(valor) ||
+          j.posicao.toLowerCase().includes(valor)
+      )
+    );
+  } else {
+    renderizarJogadoras(jogadoras);
+  }
+});
+
+filterTime.addEventListener("input", (e) => {
+  const valor = e.target.value.toLowerCase();
+  if (valor !== "todos") {
+    renderizarJogadoras(
+      jogadoras.filter((j) => j.clube.toLowerCase() === valor)
+    );
+  } else {
+    renderizarJogadoras(jogadoras);
+  }
+});
+// O LOCALCOMPARE é uma função que compara as strings pelo padrão da unicode
+ordenar.addEventListener("input", (e) => {
+  const valor = e.target.value.toLowerCase();
+  console.log(valor);
+  if (valor !== "") {
+    if (valor === "position") {
+      renderizarJogadoras(
+        [...jogadoras].sort((a, b) =>
+          a.posicao.toLowerCase().localeCompare(b.posicao.toLowerCase())
+        )
+      );
+    } else if (valor === "time") {
+      renderizarJogadoras(
+        [...jogadoras].sort((a, b) =>
+          a.clube.toLowerCase().localeCompare(b.clube.toLowerCase())
+        )
+      );
+    } else {
+      renderizarJogadoras(jogadoras);
+    }
+  } else {
+    renderizarJogadoras(jogadoras);
+  }
+});
