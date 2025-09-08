@@ -58,7 +58,6 @@ if (localStorage.getItem("jogadoras")) {
   localStorage.setItem("jogadoras", JSON.stringify(jogadoras));
 }
 
-
 function renderizarJogadoras() {
   listaJogadoras.innerHTML = "";
   jogadoras.forEach((jogadora) => {
@@ -106,3 +105,5 @@ function renderizarJogadoras() {
     listaJogadoras.appendChild(card);
   });
 }
+
+renderizarJogadoras();  
