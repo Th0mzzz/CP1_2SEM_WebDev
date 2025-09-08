@@ -50,17 +50,17 @@ let jogadoras = [
     favorita: false,
   },
 ];
-
 const listaJogadoras = document.querySelector("#lista_jogadoras");
+const form = document.querySelector(".form-jogadora");
 if (localStorage.getItem("jogadoras")) {
   jogadoras = JSON.parse(localStorage.getItem("jogadoras"));
 } else {
   localStorage.setItem("jogadoras", JSON.stringify(jogadoras));
 }
 
-function renderizarJogadoras() {
+function renderizarJogadoras(list) {
   listaJogadoras.innerHTML = "";
-  jogadoras.forEach((jogadora) => {
+  list.forEach((jogadora, index) => {
     const card = document.createElement("div");
     card.classList.add("card_jogadora");
 
@@ -72,7 +72,7 @@ function renderizarJogadoras() {
                   jogadora.favorita ? "bi-heart-fill" : "bi-heart"
                 }"></i>
                 </button>
-                <button class="btn-icon">
+                <button class="btn-icon" onClick="editarJogadora(${index})">
                     <i class="bi bi-pencil-square"></i>
                 </button>
                 <button class="btn-icon">
@@ -99,11 +99,73 @@ function renderizarJogadoras() {
                 </div>
                 </div>
             </div>
-        
             `;
 
     listaJogadoras.appendChild(card);
   });
 }
 
-renderizarJogadoras();  
+renderizarJogadoras(jogadoras);
+
+function editarJogadora(index) {
+  const jogadora = jogadoras[index];
+  document.getElementById("nome").value = jogadora.nome;
+  document.getElementById("posicao").value = jogadora.posicao;
+  document.getElementById("clube").value = jogadora.clube;
+  document.getElementById("foto").value = jogadora.foto;
+  document.getElementById("gols").value = parseInt(jogadora.gols);
+  document.getElementById("assistencias").value = parseInt(
+    jogadora.assistencias
+  );
+  document.getElementById("partidas").value = parseInt(jogadora.jogos);
+  document.getElementById("index").value = index;
+}
+
+function adicionarOuAtualizarJogadora(event) {
+  event.preventDefault();
+  const nome = document.getElementById("nome").value;
+  const posicao = document.getElementById("posicao").value;
+  const clube = document.getElementById("clube").value;
+  const foto = document.getElementById("foto").value;
+  const gols = parseInt(document.getElementById("gols").value);
+  const assistencias = parseInt(document.getElementById("assistencias").value);
+  const jogos = parseInt(document.getElementById("partidas").value);
+  const index = document.getElementById("index").value;
+
+  if (index !== "") {
+    jogadoras[index] = {
+      nome,
+      posicao,
+      clube,
+      foto,
+      gols,
+      assistencias,
+      jogos,
+      favorita: jogadoras[index].favorita,
+    };
+    alert("Jogadora atualizada com sucesso!");
+  } else {
+    jogadoras.push({
+      nome,
+      posicao,
+      clube,
+      foto,
+      gols,
+      assistencias,
+      jogos,
+      favorita: false,
+    });
+    alert("Jogadora adicionada com sucesso!");
+  }
+
+  localStorage.setItem("jogadoras", JSON.stringify(jogadoras));
+  form.reset();
+  document.getElementById("index").value = "";
+  renderizarJogadoras(jogadoras);
+}
+
+form.addEventListener("submit", (e) => {
+  adicionarOuAtualizarJogadora(e);
+});
+
+
