@@ -67,15 +67,15 @@ function renderizarJogadoras(list) {
     card.innerHTML = `
 
             <div class="btns">
-                <button class="btn-icon">
+                <button class="btn-icon" onClick="toggleFavorita(${index})">
                 <i class="bi ${
                   jogadora.favorita ? "bi-heart-fill" : "bi-heart"
-                }"></i>
+                }" ></i>
                 </button>
                 <button class="btn-icon" onClick="editarJogadora(${index})">
                     <i class="bi bi-pencil-square"></i>
                 </button>
-                <button class="btn-icon">
+                <button class="btn-icon" onClick="deletarJogadora(${index})">
                     <i class="bi bi-trash3"></i>
                 </button>
             </div>
@@ -104,8 +104,6 @@ function renderizarJogadoras(list) {
     listaJogadoras.appendChild(card);
   });
 }
-
-renderizarJogadoras(jogadoras);
 
 function editarJogadora(index) {
   const jogadora = jogadoras[index];
@@ -164,8 +162,24 @@ function adicionarOuAtualizarJogadora(event) {
   renderizarJogadoras(jogadoras);
 }
 
+function deletarJogadora(index) {
+  if (confirm("Tem certeza que deseja deletar esta jogadora?")) {
+    jogadoras.splice(index, 1);
+    localStorage.setItem("jogadoras", JSON.stringify(jogadoras));
+    alert("Jogadora deletada com sucesso!");
+    renderizarJogadoras(jogadoras);
+  }
+}
+
+function toggleFavorita(index) {
+  jogadoras[index].favorita = !jogadoras[index].favorita;
+  localStorage.setItem("jogadoras", JSON.stringify(jogadoras));
+  renderizarJogadoras(jogadoras);
+}
+
 form.addEventListener("submit", (e) => {
   adicionarOuAtualizarJogadora(e);
 });
 
+renderizarJogadoras(jogadoras);
 
