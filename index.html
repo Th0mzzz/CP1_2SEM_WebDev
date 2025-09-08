@@ -19,7 +19,10 @@
             alt="Logo do site"
           />Jogadoras FC
         </h1>
-        <a href="index.html" class="link"
+        <a
+          href="https://github.com/Th0mzzz/CP1_2SEM_WebDev"
+          target="_blank"
+          class="link"
           ><i class="bi bi-github"></i>Repositório</a
         >
       </nav>
@@ -27,9 +30,7 @@
     <main>
       <section class="container">
         <h2 class="subtitle">Cadastrar nova jogadora</h2>
-        <form
-          class="form-jogadora"
-        >
+        <form class="form-jogadora">
           <input type="hidden" name="index" id="index" />
           <div class="input-container" style="max-width: 480px">
             <label for="nome">Nome</label>
@@ -61,15 +62,14 @@
               placeholder="Digite uma posição..."
             />
           </div>
-          <div class="input-container" style="max-width: 320px">
+          <div class="input-container" style="max-width: 300px">
             <label for="clube">Clube</label>
-            <input
-              type="text"
-              id="clube"
-              name="clube"
-              required
-              placeholder="Digite o clube..."
-            />
+            <select name="clube" id="clube">
+              <option value="Santos">Santos</option>
+              <option value="Corinthians">Corinthians</option>
+              <option value="São Paulo">São Paulo</option>
+              <option value="Palmeiras">Palmeiras</option>
+            </select>
           </div>
           <div class="input-container" style="max-width: 300px">
             <label for="gols">Gols</label>
@@ -102,13 +102,40 @@
             />
           </div>
 
-          <button class="btn btn-cadastrar" type="button">
-            Cadastrar nova jogadora
-          </button>
+          <button class="btn btn-cadastrar">Cadastrar nova jogadora</button>
         </form>
       </section>
       <section class="container">
         <h2 class="subtitle">Todas as jogadoras</h2>
+        <div class="filters">
+          <div class="input-container" style="max-width: 500px">
+            <label for="pesquisa">Pesquisar</label>
+            <input
+              type="search"
+              id="pesquisa"
+              name="pesquisa"
+              placeholder="Pesquisar..."
+            />
+          </div>
+          <div class="input-container" style="max-width: 300px">
+            <label for="filterTime">Filtrar por time</label>
+            <select name="filterTime" id="filterTime">
+              <option value="todos" selected>Todos</option>
+              <option value="Santos">Santos</option>
+              <option value="Corinthians">Corinthians</option>
+              <option value="São Paulo">São Paulo</option>
+              <option value="Palmeiras">Palmeiras</option>
+            </select>
+          </div>
+          <div class="input-container" style="max-width: 200px">
+            <label for="ordenar">Ordenar por</label>
+            <select name="ordenar" id="ordenar">
+              <option value="">Nenhum</option>
+              <option value="position">Posição</option>
+              <option value="time">Time</option>
+            </select>
+          </div>
+        </div>
         <div id="lista_jogadoras"></div>
       </section>
     </main>
